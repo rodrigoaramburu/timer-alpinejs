@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
 
@@ -15,6 +16,18 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename:"css/app.css",
+        }),
+        new CopyPlugin({
+            patterns: [
+              {
+                to: path.resolve(__dirname, "dist/alarms"),
+                from: path.resolve(__dirname, "src/alarms"),
+              },
+              {
+                to: path.resolve(__dirname, "dist/images"),
+                from: path.resolve(__dirname, "src/images"),
+              },
+            ],
         }),
     ],
 

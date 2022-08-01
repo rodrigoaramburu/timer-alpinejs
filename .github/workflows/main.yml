@@ -19,7 +19,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ftp.botecodigital.dev.br
-          username: ascii-art@botecodigital.dev.br
+          username: timer@botecodigital.dev.br
           password: ${{ secrets.PASSWORD }}
           exclude: |
             **/.git*

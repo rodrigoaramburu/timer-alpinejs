@@ -1,0 +1,27 @@
+on: push
+name: deploy timer
+jobs: 
+  deploy-site:
+    name: Deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps: 
+      - name: Get latest code
+        uses: actions/checkout@v2
+
+      - name: install dependencies
+        run: npm install
+
+      - name: build for production
+        run: npm run build
+
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ftp.botecodigital.dev.br
+          username: ascii-art@botecodigital.dev.br
+          password: ${{ secrets.PASSWORD }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**

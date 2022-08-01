@@ -21,7 +21,9 @@ jobs:
           server: ftp.botecodigital.dev.br
           username: timer@botecodigital.dev.br
           password: ${{ secrets.PASSWORD }}
+          protocol: ftps
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
+            **/src/**

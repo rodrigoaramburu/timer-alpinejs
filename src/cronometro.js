@@ -139,8 +139,8 @@ window.cronometro = function(){
         },
 
 
-        loadTimer: function(timer){
-            this.timer = timer;
+        loadTimer: function(timerSaved){
+            this.timer = Object.assign({}, timerSaved);
         },
 
         deleteTimer: function(timer){
